@@ -5,7 +5,7 @@
 #ifndef CPU_INSTRUCTIONS_TIMER_H
 #define CPU_INSTRUCTIONS_TIMER_H
 
-#include <stdint-gcc.h>
+//#include <stdint-gcc.h>
 
 inline uint64_t ticks() {
     uint32_t lo, hi;
