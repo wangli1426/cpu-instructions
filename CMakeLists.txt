@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.7)
 project(cpu-instructions)
 
 SET(CMAKE_CXX_FLAGS "-O3")
-#SET(CMAKE_CXX_FLAGS "-g")
+SET(CMAKE_CXX_FLAGS "-g")
+SET(CMAKE_CXX_FLAGS "-mrtm")
 
 #add_definitions(-DVIRTUAL_FUNCTION_OPTIMIZATION)
 
@@ -14,5 +15,5 @@ set(SOURCE_FILES
         src/main.cc)
 
 # Generate b_tree executable
-add_executable(main src/main.cc)
+add_executable(main src/main.cc src/rtm.h include/tsx-cpuid.h)
 
