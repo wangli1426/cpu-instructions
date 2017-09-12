@@ -30,7 +30,6 @@ bool transaction(int &a, int &b, int amount) {
     unsigned status = _xbegin();
     if (status == _XBEGIN_STARTED) {
         a += amount;
-        sleep(100);
         b -= amount;
         _xend();
         return true;
