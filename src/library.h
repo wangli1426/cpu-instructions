@@ -13,6 +13,8 @@ inline uint64_t ticks() {
     return ((uint64_t)hi << 32) | lo;
 }
 
+#define MFENCE __sync_synchronize()
+
 #define CLFLUSH(ADDR)  __asm__ __volatile__ ("clflush (%0)" :: "r" (ADDR))
 
 #endif //CPU_INSTRUCTIONS_TIMER_H
