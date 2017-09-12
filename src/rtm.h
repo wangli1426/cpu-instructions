@@ -13,7 +13,7 @@
 
 using namespace std;
 
-static Lock lock;
+static SpinLock lock;
 
 #ifdef FORCE_SOFTWARE_TRANSACTION
 static bool rtm_supported = false;

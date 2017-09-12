@@ -34,9 +34,9 @@ public:
 /**
  * Non-recursive spinlock. Using `xchg` and `ldstub` as in PostgresSQL.
  */
-class SpineLock {
+class SpinLock {
 public:
-    SpineLock() : _l(0) {}
+    SpinLock() : _l(0) {}
 
     /** Call blocks and retunrs only when it has the lock. */
     inline void acquire() {

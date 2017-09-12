@@ -4,9 +4,9 @@
 #include "worker.h"
 int main() {
     if (rtm_supported) {
-        std::cout << "transactions are executed using rtm!" << std::endl;
+        std::cout << "transactions are being executed using rtm!" << std::endl;
     } else {
-        std::cout << "transactions are executed using software locks" << std::endl;
+        std::cout << "transactions are being executed using software locks" << std::endl;
     }
     const int number_of_transactions = 10000000;
     transaction_context context(1000, 1000);
@@ -43,7 +43,7 @@ int main() {
     }
 
     uint64_t end = ticks();
-
+    std::cout << number_of_transactions << " transactions executed." << std::endl;
     if (context.account_a == 1000 && context.account_b == 1000) {
         std::cout << "all transactions are atomic" << std::endl;
     } else {
