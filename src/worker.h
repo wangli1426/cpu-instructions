@@ -38,7 +38,9 @@ void* worker(void* args) {
             retried += !executed;
         }
     }
-    std::cout << retried << " retries." << std::endl;
+    lock.acquire();
+    std::cout << "thread " << pthread_self() << ": "<< retried << " retries." << std::endl;
+    lock.release();
 
 }
 
