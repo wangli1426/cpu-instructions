@@ -8,7 +8,7 @@ int main() {
     } else {
         std::cout << "transactions are executed using software locks" << std::endl;
     }
-    const int number_of_transactions = 1000000;
+    const int number_of_transactions = 10000000;
     transaction_context context(1000, 1000);
 
     int *transactions = new int[number_of_transactions];
