@@ -23,7 +23,6 @@ static bool rtm_supported = cpu_has_rtm() > 0;
 
 bool transaction(int &a, int &b, int amount) {
     if (! rtm_supported) {
-//        std::cout << "rtm not supported" << std::endl;
         lock.acquire();
         a += amount;
         b -= amount;
@@ -38,17 +37,6 @@ bool transaction(int &a, int &b, int amount) {
         _xend();
         return true;
     } else {
-//        switch (status) {
-//            case _XABORT_CONFLICT:
-//                std::cout << "_XABORT_CONFLICT" << std::endl;
-//                break;
-//            case _XABORT_CAPACITY:
-//                std::cout << "_XABORT_CAPACITY" << std::endl;
-//                break;
-//            default:
-//                std::cout << "DEFAULT!" << std::endl;
-//                break;
-//        }
         return false;
     }
 

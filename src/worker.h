@@ -19,6 +19,7 @@ void* worker(void* args) {
     transaction_context *context = reinterpret_cast<transaction_context*>(args);
     int volume;
     bool executed;
+    int retried = 0;
     while (true) {
         context->lock.acquire();
         int size = context->queues.size();
@@ -34,8 +35,10 @@ void* worker(void* args) {
         executed = false;
         while (!executed) {
             executed = transaction(context->account_a, context->account_b, volume);
+            retried += !executed;
         }
     }
+    std::cout << retried << " retries." << std::endl;
 
 }
 
