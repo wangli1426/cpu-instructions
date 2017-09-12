@@ -108,7 +108,11 @@ public:
         time.tv_sec = millisecond / 1000;
         millisecond = millisecond % (1000);
         time.tv_nsec = millisecond * (long)1000 * 1000;
+#ifndef __APPLE__
         return sem_timedwait(&sem, &time) == 0;
+#else
+        return false;
+#endif
     }
 
     inline bool try_wait() {

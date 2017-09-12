@@ -2,6 +2,8 @@
 #include "library.h"
 #include "rtm.h"
 #include "worker.h"
+
+using namespace rtm;
 int main() {
     if (rtm_supported) {
         std::cout << "transactions are being executed using rtm!" << std::endl;
@@ -35,7 +37,7 @@ int main() {
 
     uint64_t start = ticks();
     for (int i = 0; i < number_of_threads; ++i) {
-        pthread_create(&tid[i], NULL, worker, &context);
+        pthread_create(&tid[i], NULL, rtm::worker, &context);
     }
 
     for (int i = 0; i < number_of_threads; ++i) {

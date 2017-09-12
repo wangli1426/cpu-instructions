@@ -12,36 +12,36 @@
 #include "sync.h"
 
 using namespace std;
-
-static SpinLock lock;
+namespace rtm {
+    static SpinLock lock;
 
 #ifdef FORCE_SOFTWARE_TRANSACTION
-static bool rtm_supported = false;
+    static bool rtm_supported = false;
 #else
-static bool rtm_supported = cpu_has_rtm() > 0;
+    static bool rtm_supported = cpu_has_rtm() > 0;
 #endif
 
-bool transaction(int &a, int &b, int amount) {
-    if (! rtm_supported) {
-        lock.acquire();
-        a += amount;
-        b -= amount;
-        lock.release();
-        return true;
-    }
+    bool transaction(int &a, int &b, int amount) {
+        if (!rtm_supported) {
+            lock.acquire();
+            a += amount;
+            b -= amount;
+            rtm::lock.release();
+            return true;
+        }
 
-    unsigned status = _xbegin();
-    if (status == _XBEGIN_STARTED) {
-        a += amount;
-        b -= amount;
-        _xend();
-        return true;
-    } else {
-        return false;
-    }
+        unsigned status = _xbegin();
+        if (status == _XBEGIN_STARTED) {
+            a += amount;
+            b -= amount;
+            _xend();
+            return true;
+        } else {
+            return false;
+        }
 
+    }
 }
-
 
 
 
