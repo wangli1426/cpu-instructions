@@ -35,17 +35,17 @@ bool transaction(int &a, int &b, int amount) {
         _xend();
         return true;
     } else {
-        switch (status) {
-            case _XABORT_CONFLICT:
-                std::cout << "_XABORT_CONFLICT" << std::endl;
-                break;
-            case _XABORT_CAPACITY:
-                std::cout << "_XABORT_CAPACITY" << std::endl;
-                break;
-            default:
-                std::cout << "DEFAULT!" << std::endl;
-                break;
-        }
+//        switch (status) {
+//            case _XABORT_CONFLICT:
+//                std::cout << "_XABORT_CONFLICT" << std::endl;
+//                break;
+//            case _XABORT_CAPACITY:
+//                std::cout << "_XABORT_CAPACITY" << std::endl;
+//                break;
+//            default:
+//                std::cout << "DEFAULT!" << std::endl;
+//                break;
+//        }
         return false;
     }
 
