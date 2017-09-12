@@ -15,7 +15,11 @@ using namespace std;
 
 static Lock lock;
 
+#ifdef FORCE_SOFTWARE_TRANSACTION
+static bool rtm_supported = false;
+#else
 static bool rtm_supported = cpu_has_rtm() > 0;
+#endif
 
 bool transaction(int &a, int &b, int amount) {
     if (! rtm_supported) {

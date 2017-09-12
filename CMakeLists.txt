@@ -5,6 +5,7 @@ SET(CMAKE_CXX_FLAGS "-O0")
 SET(CMAKE_CXX_FLAGS "-pthread -mrtm")
 
 #add_definitions(-DVIRTUAL_FUNCTION_OPTIMIZATION)
+#add_definitions(-DFORCE_SOFTWARE_TRANSACTION)
 
 set(CMAKE_CXX_STANDARD 11)
 #find_package(Threads REQUIRED)
