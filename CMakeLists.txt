@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(cpu-instructions)
 
-SET(CMAKE_CXX_FLAGS "-O3")
-SET(CMAKE_CXX_FLAGS "-pthread -mrtm")
+SET(CMAKE_CXX_FLAGS "-pthread -mrtm -O3")
 
 #add_definitions(-DVIRTUAL_FUNCTION_OPTIMIZATION)
 #add_definitions(-DFORCE_SOFTWARE_TRANSACTION)
